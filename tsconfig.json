@@ -20,6 +20,7 @@
 		],
 		"paths": {
 			"@/*": ["./src/*"],
+			"@prisma": ["./src/lib/prisma.ts"],
 			"@api/*": ["./src/app/api/*"],
 			"@app/*": ["./src/app/*"]
 		},
