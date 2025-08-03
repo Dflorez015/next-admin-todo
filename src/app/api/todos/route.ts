@@ -41,3 +41,20 @@ export async function GET(request: Request) {
 
 	return NextResponse.json(todos);
 }
+
+export async function POST(request: Request) {
+	const data = await request.json();
+
+	if (!data) {
+		return NextResponse.json(
+			{ message: "Invalid request body, must be a JSON object" },
+			{ status: 400 },
+		);
+	}
+
+	const todo = await prisma.todo.create({
+		data,
+	});
+
+	return NextResponse.json(todo);
+}
