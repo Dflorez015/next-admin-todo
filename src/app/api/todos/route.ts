@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@prisma";
+import { createTodoDtoSchema } from "./_dto";
 
 export async function GET(request: Request) {
 	const searchParams = new URL(request.url).searchParams;
@@ -52,8 +53,24 @@ export async function POST(request: Request) {
 		);
 	}
 
+	// TODO: try catch wrapper or either pattern
+	const validateData = await createTodoDtoSchema
+		.validate(data, { strict: true })
+		.catch((err) => err);
+
+	if ("errors" in validateData) {
+		return NextResponse.json(
+			{ message: `${validateData.errors}` },
+			{ status: 400 },
+		);
+	}
+
 	const todo = await prisma.todo.create({
-		data,
+		data: {
+			description: validateData.description,
+			title: validateData.title,
+			completed: validateData.completed,
+		},
 	});
 
 	return NextResponse.json(todo);
