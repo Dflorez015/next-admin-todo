@@ -16,7 +16,7 @@ This is a simple todo app built with Next.js and Postgres. It uses Docker to run
 4. Execute the `npx prisma migrate dev` command to create the database schema
 5. Execute the `npx prisma generate` command to generate the Prisma client
 6. Execute the `npm run dev` command to start the Next.js development server
-7. You can now start adding todos and see them in the database executing the [seed](localhost:3000/api/seed) endpoint
+7. You can now start adding todos and see them in the database executing the [seed](localhost:3001/api/seed) endpoint
 
 # Prisma
 
