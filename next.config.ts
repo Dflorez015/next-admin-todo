@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
 	/* config options here */
 	images: {
-		remotePatterns: [new URL("https://tailus.io/**")],
+		remotePatterns: [{ protocol: "https", hostname: "dummyimage.com" }],
 	},
 };
 

@@ -1,7 +1,24 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { CiLogout } from "react-icons/ci";
+import { FaCalendarAlt, FaCheckSquare, FaList } from "react-icons/fa"; // Importación de íconos
 import SidebarItem from "./SidebarItem";
+
+// Opciones de navegación
+const sidebarOptions = [
+	{ href: "/dashboard", title: "Dashboard", iconAction: FaCalendarAlt },
+	{
+		href: "/dashboard/rest-todos",
+		title: "Rest TODOS",
+		iconAction: FaCheckSquare,
+	},
+	{
+		href: "/dashboard/server-todos",
+		title: "Server actions",
+		iconAction: FaList,
+	},
+];
 
 export default function Sidebar() {
 	return (
@@ -10,21 +27,21 @@ export default function Sidebar() {
 				<div className="-mx-6 px-6 py-4">
 					<Link href="/dashboard" title="home">
 						<Image
-							src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg"
+							src="https://dummyimage.com/128x40.png/000/ffffff&text=Logo"
 							className="w-32"
 							width={128}
 							height={40}
-							alt="tailus logo"
+							alt="logo"
 						/>
 					</Link>
 				</div>
 
 				<div className="mt-8 text-center">
 					<Image
-						src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp"
-						alt=""
-						width={40}
-						height={40}
+						src="https://dummyimage.com/180x180.png/000/ffffff&text=User"
+						alt="user_logo"
+						width={110}
+						height={110}
 						className="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28"
 					/>
 					<h5 className="hidden mt-4 text-xl font-semibold text-gray-600 dark:text-gray-200 lg:block">
@@ -36,12 +53,14 @@ export default function Sidebar() {
 				</div>
 
 				<ul className="space-y-2 tracking-wide mt-8">
-					<li>
-						<SidebarItem href="/dashboard" title="Dashboard" />
-					</li>
-					<li>
-						<SidebarItem href="/categories" title="Categories" />
-					</li>
+					{sidebarOptions.map((option) => (
+						<SidebarItem
+							key={option.href}
+							href={option.href}
+							title={option.title}
+							iconAction={option.iconAction}
+						/>
+					))}
 				</ul>
 			</div>
 
