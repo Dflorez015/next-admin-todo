@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@prisma";
-import { createTodoDtoSchema, updateTodoDtoSchema } from "../_dto";
+import { updateTodoDtoSchema } from "../_dto";
 
 interface TodoByIdArgs {
 	params: {
