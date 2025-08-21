@@ -27,7 +27,7 @@ export async function GET(request: Request, args: TodoByIdArgs) {
 }
 
 export async function PATCH(request: Request, args: TodoByIdArgs) {
-	const { id } = args.params;
+	const { id } = await args.params;
 	const data = await request.json();
 
 	if (!data) {

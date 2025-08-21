@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { FaCheckSquare, FaRegSquare } from "react-icons/fa"; // Importación de íconos
 
 type ToggleTodoProps = {
@@ -13,10 +14,14 @@ export default function ToggleTodo({
 	todo,
 	handleTodoStateAction,
 }: ToggleTodoProps) {
+	const router = useRouter();
 	return (
 		<button
 			type="button"
-			onClick={() => handleTodoStateAction(todo.id, !todo.completed)}
+			onClick={() => {
+				handleTodoStateAction(todo.id, !todo.completed);
+				router.refresh();
+			}}
 		>
 			{todo.completed ? (
 				<FaCheckSquare className="text-green-500" size={24} />
