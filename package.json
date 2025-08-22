@@ -6,6 +6,7 @@
 		"dev": "next dev --turbopack -p 3001",
 		"debug": "next dev --turbopack -p 3001 Debugger attached.",
 		"build": "next build",
+		"routes": "next typegen",
 		"start": "next start",
 		"lint": "npx @biomejs/biome check --write"
 	},

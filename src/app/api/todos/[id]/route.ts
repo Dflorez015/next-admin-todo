@@ -8,7 +8,7 @@ interface TodoByIdArgs {
 	};
 }
 
-export async function GET(request: Request, args: TodoByIdArgs) {
+export async function GET(_: Request, args: TodoByIdArgs) {
 	const { id } = args.params;
 	const todo = await prisma.todo.findUnique({
 		where: {
@@ -27,7 +27,7 @@ export async function GET(request: Request, args: TodoByIdArgs) {
 }
 
 export async function PATCH(request: Request, args: TodoByIdArgs) {
-	const { id } = await args.params;
+	const { id } = args.params;
 	const data = await request.json();
 
 	if (!data) {
