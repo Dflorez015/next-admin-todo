@@ -1,7 +1,7 @@
 import type { Todo } from "@prisma/client";
-import DeleteTodos from "./_components/DeleteTodos";
-import { NewTodo } from "./_components/NewTodo";
-import ToggleTodo from "./_components/ToggleTodo";
+import DeleteTodos from "../_components/DeleteTodos";
+import { NewTodo } from "../_components/NewTodo";
+import ToggleTodo from "../_components/ToggleTodo";
 import {
 	createTodo,
 	deleteActiveTodos,
@@ -56,6 +56,7 @@ export default async function Page() {
 			<section>
 				<NewTodo createTodoAction={createTodoMutation} />
 				{todosCount > 0 ? (
+					//TODO: hacer un badge de todosCount sobre este componente
 					<DeleteTodos deleteTodosAction={deleteTodosMutation} />
 				) : null}
 			</section>
